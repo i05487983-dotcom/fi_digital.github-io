@@ -2,191 +2,248 @@
 
 <html lang="en">
 <head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FI Digital — Digital Marketing Agency</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-<!-- HERO SECTION START -->
-<section class="hero">
 
-  <!-- AI background -->
-  <canvas id="bg"></canvas>
+:root{
+--bg:#EAF5F1;
+--accent:#2F7F6D;
+--dark:#0F3F35;
+}
 
-  <!-- Контент сайту -->
-  <div class="content">
-    <h1 class="logo">FI Digital</h1>
-    <p class="subtitle">AI Automation & Digital Growth</p>
-    <p class="offer">We provide a <strong>free AI analysis & review</strong> for your business</p>
-    <a class="btn" href="https://www.instagram.com/direct/inbox/?username=YOUR_USERNAME" target="_blank">
-      Get Free Analysis
-    </a>
-  </div>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter,sans-serif;
+scroll-behavior:smooth;
+}
 
-</section>
+/* --- ANIMATION FROM YOUR FIRST SITE --- */
 
-<style>
-/* HERO STYLES */
+body{
+background:var(--bg);
+color:var(--dark);
+animation:fade 1.5s ease;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(50px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* --- LAYOUT --- */
+
+section{
+padding:100px 8%;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+h1{
+font-size:70px;
+font-weight:900;
+letter-spacing:-2px;
+}
+
+h2{
+font-size:42px;
+margin-bottom:40px;
+}
+
+p{
+font-size:18px;
+opacity:.85;
+line-height:1.6;
+}
+
+/* HERO */
+
 .hero{
-  position:relative;
-  height:100vh;
-  width:100%;
-  overflow:hidden;
-  background:#0F3F35;
-  font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+background:radial-gradient(circle at top, rgba(47,127,109,.25), transparent 60%);
 }
 
-/* Canvas background */
-#bg{
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  z-index:0;
+.hero p{
+margin:20px auto 35px;
+max-width:600px;
 }
 
-/* Content above background */
-.content{
-  position:relative;
-  z-index:1;
-  height:100%;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-  padding: 0 20px;
-}
+/* BUTTON */
 
-/* Logo with glow */
-.logo{
-  font-size:70px;
-  color:#EAF5F1;
-  letter-spacing:4px;
-  opacity:0;
-  transform:translateY(40px);
-  animation:fadeUp 2s ease forwards, glow 3s infinite alternate;
-}
-
-/* Subtitle */
-.subtitle{
-  color:#EAF5F1;
-  opacity:0;
-  margin-top:15px;
-  animation:fadeUp 2.5s ease forwards;
-}
-
-/* Offer text */
-.offer{
-  color:#E6E6FA;
-  opacity:0;
-  margin-top:10px;
-  font-size:18px;
-  animation:fadeUp 3s ease forwards;
-}
-
-/* Button */
 .btn{
-  margin-top:30px;
-  padding:15px 35px;
-  background:#2F7F6D;
-  color:white;
-  border:none;
-  border-radius:8px;
-  font-size:16px;
-  cursor:pointer;
-  opacity:0;
-  animation:fadeUp 3.5s ease forwards;
-  transition:all 0.3s ease;
-  text-decoration:none;
-  display:inline-block;
+display:inline-block;
+padding:16px 32px;
+border-radius:40px;
+background:var(--accent);
+color:white;
+font-weight:600;
+text-decoration:none;
+transition:.3s;
+box-shadow:0 10px 30px rgba(47,127,109,.35);
 }
 
 .btn:hover{
-  transform:scale(1.1);
-  box-shadow:
-    0 0 20px #2F7F6D,
-    0 0 40px #2F7F6D;
+transform:translateY(-4px) scale(1.05);
+box-shadow:0 15px 40px rgba(47,127,109,.6);
 }
 
-/* Animations */
-@keyframes fadeUp{
-  0%{opacity:0; transform:translateY(40px);}
-  100%{opacity:1; transform:translateY(0);}
+/* GRID */
+
+.grid{
+display:grid;
+gap:30px;
 }
 
-@keyframes glow{
-  0%{text-shadow:0 0 10px #2F7F6D;}
-  100%{text-shadow:0 0 20px #2F7F6D,0 0 40px #2F7F6D,0 0 60px #2F7F6D;}
+.services{
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+}
+
+.results{
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+}
+
+.process{
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+}
+
+/* CARD */
+
+.card{
+background:rgba(255,255,255,.35);
+backdrop-filter:blur(12px);
+padding:35px;
+border-radius:18px;
+border:1px solid rgba(255,255,255,.4);
+transition:.35s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 50px rgba(0,0,0,.08);
+}
+
+/* DARK SECTION */
+
+.dark{
+background:var(--dark);
+color:white;
+}
+
+.dark p{
+opacity:.9;
+}
+
+/* REVIEWS */
+
+.review{
+font-style:italic;
+}
+
+/* CONTACT */
+
+.contact{
+display:flex;
+flex-wrap:wrap;
+gap:60px;
+}
+
+form{
+display:flex;
+flex-direction:column;
+gap:15px;
+max-width:450px;
+}
+
+input,textarea{
+padding:14px;
+border-radius:10px;
+border:none;
+font-size:16px;
+}
+
+textarea{
+height:120px;
+}
+
+/* CALENDAR */
+
+.calendar{
+margin-top:50px;
+border-radius:18px;
+overflow:hidden;
+box-shadow:0 20px 50px rgba(0,0,0,.1);
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:40px;
+opacity:.7;
+}
+
+/* BACKGROUND GLOW */
+
+.glow{
+position:fixed;
+width:500px;
+height:500px;
+background:radial-gradient(circle,var(--accent),transparent 70%);
+filter:blur(120px);
+opacity:.2;
+top:-150px;
+left:-150px;
+z-index:-1;
+animation:float 7s infinite alternate;
+}
+
+@keyframes float{
+from{transform:translateY(-20px)}
+to{transform:translateY(40px)}
 }
 
 </style>
 
-<script>
-// AI digital background
-const canvas = document.getElementById("bg")
-const ctx = canvas.getContext("2d")
-canvas.width = window.innerWidth
-canvas.height = window.innerHeight
+</head>
 
-let particles=[]
-for(let i=0;i<120;i++){
-  particles.push({
-    x:Math.random()*canvas.width,
-    y:Math.random()*canvas.height,
-    vx:(Math.random()-0.5)*1,
-    vy:(Math.random()-0.5)*1
-  })
-}
+<body>
 
-function animate(){
-  ctx.clearRect(0,0,canvas.width,canvas.height)
-  particles.forEach(p=>{
-    p.x+=p.vx
-    p.y+=p.vy
-    ctx.fillStyle="#2F7F6D"
-    ctx.fillRect(p.x,p.y,2,2)
-    particles.forEach(p2=>{
-      let dx=p.x-p2.x
-      let dy=p.y-p2.y
-      let dist=Math.sqrt(dx*dx+dy*dy)
-      if(dist<100){
-        ctx.strokeStyle="rgba(47,127,109,0.2)"
-        ctx.beginPath()
-        ctx.moveTo(p.x,p.y)
-        ctx.lineTo(p2.x,p2.y)
-        ctx.stroke()
-      }
-    })
-  })
-  requestAnimationFrame(animate)
-}
-animate()
-</script>
-<!-- Контент сайту -->
-<div class="content">
+<div class="glow"></div>
 
-<h1 class="logo">FI Digital</h1>
+<!-- HERO -->
 
-<a href="#contact" class="btn">Book a Call</a>
+<section class="hero">
 
-</div>
+<div class="container">
+
+<h1>FI Digital</h1>
 
 <p>
-Premium digital marketing agency helping brands grow with social media, ads, and modern growth strategies.Most businesses lose potential clients every day.
-
-People visit their website or social media, but leave because no one responds fast enough, the content is not engaging, and many processes are still manual.
-
-This means lost customers, lost time, and lost revenue.
-
-FI Digital helps solve this.
-
-We use AI automation and modern digital strategies to help businesses attract more clients, respond faster, and grow more efficiently.
-
-Less manual work.
-More clients.
-More growth for your business.
+Premium digital marketing agency helping brands grow with social media, ads, and modern growth strategies.
 </p>
 
+<a href="#contact" class="btn">Book a Call</a>
 
 </div>
 
@@ -254,7 +311,7 @@ More growth for your business.
 </div>
 
 <div class="card">
-<h3>$132K+</h3>
+<h3>$150K+</h3>
 <p>Revenue generated for clients</p>
 </div>
 
@@ -274,114 +331,31 @@ More growth for your business.
 
 <div class="grid process">
 
-<div class="card process-card" onclick="openProcess('discovery')">
+<div class="card">
 <h3>Discovery</h3>
 <p>We analyze your brand and market.</p>
 </div>
 
-<div class="card process-card" onclick="openProcess('strategy')">
+<div class="card">
 <h3>Strategy</h3>
 <p>Build a custom growth system.</p>
 </div>
 
-<div class="card process-card" onclick="openProcess('execution')">
+<div class="card">
 <h3>Execution</h3>
 <p>Launch campaigns and content.</p>
 </div>
 
-<div class="card process-card" onclick="openProcess('scaling')">
+<div class="card">
 <h3>Scaling</h3>
 <p>Optimize and scale what works.</p>
 </div>
 
 </div>
 
-<!-- EXPANDED INFO -->
-
-<div id="process-details" class="process-details">
-
-<h3 id="process-title"></h3>
-
-<p id="process-text"></p>
-
-</div>
-
 </div>
 
 </section>
-
-<style>
-
-.process-card{
-cursor:pointer;
-}
-
-.process-details{
-max-width:900px;
-margin:50px auto 0;
-padding:40px;
-background:rgba(255,255,255,.4);
-backdrop-filter:blur(10px);
-border-radius:18px;
-border:1px solid rgba(255,255,255,.5);
-opacity:0;
-transform:translateY(40px);
-transition:.6s;
-}
-
-.process-details.show{
-opacity:1;
-transform:translateY(0);
-}
-
-.process-details h3{
-font-size:30px;
-margin-bottom:20px;
-}
-
-</style>
-
-<script>
-
-const processData={
-
-discovery:{
-title:"Discovery Phase",
-text:"During discovery we deeply analyze your brand, target audience, competitors and market positioning. We study your existing marketing channels, identify growth opportunities, and uncover hidden inefficiencies in your funnel. This stage includes audience research, content analysis, and competitor breakdown so we understand exactly where your growth opportunities are."
-},
-
-strategy:{
-title:"Strategy Development",
-text:"Once we understand your brand, we build a customized growth strategy. This includes content frameworks, ad funnel design, messaging strategy, creative direction, and platform selection. The goal is to create a system that consistently attracts attention, converts users into customers, and scales predictably."
-},
-
-execution:{
-title:"Campaign Execution",
-text:"This is where the strategy comes to life. Our team launches social media content, paid advertising campaigns, and growth systems across platforms. We test creatives, optimize targeting, analyze performance data, and continuously improve campaigns to maximize conversions and engagement."
-},
-
-scaling:{
-title:"Scaling & Optimization",
-text:"After identifying what works, we scale the winning campaigns. This includes increasing ad spend strategically, expanding to new audiences, optimizing creatives, and automating growth systems. The goal is to transform successful campaigns into predictable revenue engines for your brand."
-}
-
-}
-
-function openProcess(step){
-
-const box=document.getElementById("process-details")
-
-document.getElementById("process-title").innerText=processData[step].title
-
-document.getElementById("process-text").innerText=processData[step].text
-
-box.classList.add("show")
-
-box.scrollIntoView({behavior:"smooth"})
-
-}
-
-</script>
 
 <!-- ABOUT -->
 
