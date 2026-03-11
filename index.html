@@ -2,7 +2,55 @@
 
 <html lang="en">
 <head>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+<style>
+
+:root{
+--bg:#EAF5F1;
+--accent:#2F7F6D;
+--dark:#0F3F35;
+}
+
+body{
+background:var(--bg);
+font-family:Inter,sans-serif;
+animation:fade 1.5s ease;
+}
+
+/* animation */
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(50px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* button */
+
+.btn{
+display:inline-block;
+padding:16px 34px;
+border-radius:40px;
+background:var(--accent);
+color:white;
+font-weight:600;
+text-decoration:none;
+transition:0.3s;
+box-shadow:0 10px 30px rgba(47,127,109,.35);
+}
+
+.btn:hover{
+transform:translateY(-4px) scale(1.05);
+box-shadow:0 15px 40px rgba(47,127,109,.6);
+}
+
+</style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -203,33 +251,6 @@ padding:40px;
 opacity:.7;
 }
 
-/* BACKGROUND GLOW */
-
-.glow{
-position:fixed;
-width:500px;
-height:500px;
-background:radial-gradient(circle,var(--accent),transparent 70%);
-filter:blur(120px);
-opacity:.2;
-top:-150px;
-left:-150px;
-z-index:-1;
-animation:float 7s infinite alternate;
-}
-
-@keyframes float{
-from{transform:translateY(-20px)}
-to{transform:translateY(40px)}
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="glow"></div>
 
 <!-- HERO SECTION START -->
 <section class="hero">
