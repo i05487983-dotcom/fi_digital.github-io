@@ -5,9 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FI Digital</title>
+<title>FI Digital — Marketing Agency</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
 
 <style>
 
@@ -37,7 +37,8 @@ text-align:center;
 
 h1{
 font-size:70px;
-font-weight:800;
+font-weight:900;
+letter-spacing:-2px;
 }
 
 h2{
@@ -46,10 +47,11 @@ margin-bottom:40px;
 }
 
 p{
-font-size:18px;
-opacity:.85;
 max-width:700px;
 margin:auto;
+font-size:18px;
+opacity:.85;
+line-height:1.6;
 }
 
 .btn{
@@ -66,26 +68,29 @@ box-shadow:0 10px 30px rgba(47,127,109,.4);
 }
 
 .btn:hover{
-transform:translateY(-4px);
+transform:translateY(-5px);
 }
 
 .hero{
 height:90vh;
 display:flex;
+flex-direction:column;
 align-items:center;
 justify-content:center;
-flex-direction:column;
-background:radial-gradient(circle, rgba(47,127,109,.25), transparent 60%);
+background:radial-gradient(circle at center,rgba(47,127,109,.3),transparent 70%);
 }
 
 .glow{
-position:absolute;
+position:fixed;
 width:500px;
 height:500px;
 background:radial-gradient(circle,var(--accent),transparent);
 filter:blur(140px);
-opacity:.25;
-animation:float 7s infinite alternate;
+opacity:.2;
+top:-150px;
+left:-150px;
+animation:float 6s infinite alternate;
+z-index:-1;
 }
 
 @keyframes float{
@@ -93,33 +98,36 @@ from{transform:translateY(-40px)}
 to{transform:translateY(40px)}
 }
 
-/* SERVICES WHEEL */
+/* SERVICES ROTATOR */
 
-.wheel-wrapper{
+.service-rotator{
 display:flex;
 align-items:center;
 justify-content:center;
-gap:40px;
-margin-top:60px;
+gap:30px;
+margin-top:50px;
 }
 
-.wheel{
-width:220px;
-height:220px;
+.arrow{
+font-size:40px;
+cursor:pointer;
+color:var(--accent);
+user-select:none;
+}
+
+.services-box{
 display:grid;
 grid-template-columns:1fr 1fr;
-grid-template-rows:1fr 1fr;
-gap:10px;
-transition:.5s;
+gap:15px;
+width:260px;
+transition:.4s;
 }
 
 .service{
-background:rgba(255,255,255,.5);
-border:1px solid rgba(0,0,0,.05);
-border-radius:14px;
-display:flex;
-align-items:center;
-justify-content:center;
+background:rgba(255,255,255,.45);
+backdrop-filter:blur(10px);
+padding:25px;
+border-radius:16px;
 font-weight:600;
 cursor:pointer;
 transition:.3s;
@@ -130,26 +138,26 @@ background:var(--accent);
 color:white;
 }
 
-.arrow{
-font-size:40px;
-cursor:pointer;
-color:var(--accent);
+/* SERVICE DETAILS */
+
+.detail{
+margin-top:60px;
 }
 
 /* CASE STUDY */
 
 .case{
+margin-top:60px;
 background:var(--dark);
 color:white;
+padding:70px;
 border-radius:20px;
-padding:60px;
-margin-top:60px;
 }
 
 .money{
 font-size:48px;
-font-weight:800;
-margin:20px 0;
+font-weight:900;
+margin:15px 0;
 }
 
 /* CONTACT */
@@ -159,15 +167,24 @@ margin-top:40px;
 }
 
 .offer{
-background:rgba(47,127,109,.1);
-padding:25px;
-border-radius:14px;
 margin-top:20px;
+padding:20px;
+background:rgba(47,127,109,.12);
+border-radius:12px;
 font-weight:600;
 }
 
-footer{
+/* CALENDAR */
+
+.calendar{
 margin-top:60px;
+border-radius:20px;
+overflow:hidden;
+box-shadow:0 20px 60px rgba(0,0,0,.1);
+}
+
+footer{
+margin-top:70px;
 opacity:.6;
 }
 
@@ -186,13 +203,12 @@ opacity:.6;
 <h1>FI Digital</h1>
 
 <p>
-Futuristic digital marketing agency helping brands grow with social media, ads and modern strategy.
+Premium digital marketing agency helping brands grow with social media, ads and modern growth systems.
 </p>
 
-<a href="#services" class="btn">Our Services</a>
+<a href="#services" class="btn">Explore Services</a>
 
 </section>
-
 
 <!-- SERVICES -->
 
@@ -200,18 +216,18 @@ Futuristic digital marketing agency helping brands grow with social media, ads a
 
 <h2>Our Services</h2>
 
-<p>Rotate the services and click one to see what we do.</p>
+<p>Rotate and click a service to see what we do.</p>
 
-<div class="wheel-wrapper">
+<div class="service-rotator">
 
 <div class="arrow" onclick="rotateLeft()">⟵</div>
 
-<div class="wheel" id="wheel">
+<div class="services-box" id="servicesBox">
 
-<div class="service" onclick="scrollToSection('smm')">SMM</div>
-<div class="service" onclick="scrollToSection('ads')">Paid Ads</div>
-<div class="service" onclick="scrollToSection('branding')">Branding</div>
-<div class="service" onclick="scrollToSection('content')">Content</div>
+<div class="service" onclick="goTo('smm')">SMM</div>
+<div class="service" onclick="goTo('ads')">Paid Ads</div>
+<div class="service" onclick="goTo('branding')">Branding</div>
+<div class="service" onclick="goTo('content')">Content</div>
 
 </div>
 
@@ -221,52 +237,47 @@ Futuristic digital marketing agency helping brands grow with social media, ads a
 
 </section>
 
+<!-- DETAILS -->
 
-<!-- SERVICE DETAILS -->
-
-<section id="smm">
+<section id="smm" class="detail">
 
 <h2>Social Media Marketing</h2>
 
 <p>
-We grow your brand on TikTok, Instagram and other platforms with viral content and proven strategies.
+We scale brands through TikTok, Instagram and modern social media growth strategies.
 </p>
 
 </section>
 
-
-<section id="ads">
+<section id="ads" class="detail">
 
 <h2>Paid Advertising</h2>
 
 <p>
-We create high converting Meta and TikTok ads that bring real ROI.
+High performance Meta and TikTok ads built to generate measurable ROI.
 </p>
 
 </section>
 
-
-<section id="branding">
+<section id="branding" class="detail">
 
 <h2>Brand Strategy</h2>
 
 <p>
-Premium brand identity and positioning that makes your company stand out.
+Premium positioning, identity and messaging for modern companies.
 </p>
 
 </section>
 
-
-<section id="content">
+<section id="content" class="detail">
 
 <h2>Content Strategy</h2>
 
 <p>
-Content systems designed to attract views and convert followers into customers.
+We design content systems that generate millions of views and attract customers.
 </p>
 
 </section>
-
 
 <!-- CASE STUDY -->
 
@@ -280,11 +291,11 @@ Content systems designed to attract views and convert followers into customers.
 
 <div class="money">$1,430</div>
 
-<p>Revenue Generated With Our Strategy</p>
+<p>Revenue Generated</p>
 
 <div class="money">$30,400</div>
 
-<p>Through optimized creatives, targeting and content strategy.</p>
+<p>Using optimized creatives, targeting and scaling strategy.</p>
 
 <a class="btn">Get Reviews From Our Clients</a>
 
@@ -292,19 +303,20 @@ Content systems designed to attract views and convert followers into customers.
 
 </section>
 
-
 <!-- CONTACT -->
 
 <section>
 
-<h2>Work With Us</h2>
+<h2>Work With FI Digital</h2>
 
 <p>
-Want to scale your business with FI Digital?
+We help ambitious brands grow faster through modern marketing.
 </p>
 
 <div class="offer">
-First month is <b>50% OFF</b> so we can prove our ROI.
+
+First month is **50% OFF** so we can prove our ROI.
+
 </div>
 
 <div class="contact">
@@ -317,33 +329,51 @@ First month is <b>50% OFF</b> so we can prove our ROI.
 
 </div>
 
+</section>
+
+<!-- GOOGLE CALENDAR -->
+
+<section>
+
+<h2>Book a Call</h2>
+
+<p>Schedule a strategy call with our team.</p>
+
+<div class="calendar">
+
+<iframe
+src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3example"
+width="100%"
+height="600"
+frameborder="0">
+</iframe>
+
+</div>
+
+</section>
+
 <footer>
 
 FI Digital © 2026
 
 </footer>
 
-</section>
-
-
 <script>
 
-let rotation = 0
+let rotation=0
 
 function rotateLeft(){
-rotation -= 90
-document.getElementById("wheel").style.transform =
-`rotate(${rotation}deg)`
+rotation-=90
+document.getElementById("servicesBox").style.transform=`rotate(${rotation}deg)`
 }
 
 function rotateRight(){
-rotation += 90
-document.getElementById("wheel").style.transform =
-`rotate(${rotation}deg)`
+rotation+=90
+document.getElementById("servicesBox").style.transform=`rotate(${rotation}deg)`
 }
 
-function scrollToSection(id){
-document.getElementById(id).scrollIntoView()
+function goTo(id){
+document.getElementById(id).scrollIntoView({behavior:"smooth"})
 }
 
 </script>
