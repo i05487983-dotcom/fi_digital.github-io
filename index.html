@@ -1,492 +1,412 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>FI Digital — Digital Marketing Agency</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
 <style>
-
 :root{
---bg:#EAF5F1;
---accent:#2F7F6D;
---dark:#0F3F35;
+  --bg:#EAF5F1;
+  --accent:#2F7F6D;
+  --dark:#0F3F35;
 }
-
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Inter,sans-serif;
-scroll-behavior:smooth;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Inter,sans-serif;
+  scroll-behavior:smooth;
 }
 
-/* --- ANIMATION FROM YOUR FIRST SITE --- */
-
+/* GLOBAL */
 body{
-background:var(--bg);
-color:var(--dark);
-animation:fade 1.5s ease;
+  background:var(--bg);
+  color:var(--dark);
 }
 
-@keyframes fade{
-from{
-opacity:0;
-transform:translateY(50px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-/* --- LAYOUT --- */
-
+/* FADE-IN ON SCROLL */
 section{
-padding:100px 8%;
+  opacity:0;
+  transform:translateY(50px);
+  transition:opacity 0.8s ease, transform 0.8s ease;
+  padding:100px 8%;
+}
+section.visible{
+  opacity:1;
+  transform:translateY(0);
 }
 
 .container{
-max-width:1200px;
-margin:auto;
+  max-width:1200px;
+  margin:auto;
 }
-
 h1{
-font-size:70px;
-font-weight:900;
-letter-spacing:-2px;
+  font-size:70px;
+  font-weight:900;
+  letter-spacing:-2px;
 }
-
 h2{
-font-size:42px;
-margin-bottom:40px;
+  font-size:42px;
+  margin-bottom:40px;
 }
-
 p{
-font-size:18px;
-opacity:.85;
-line-height:1.6;
+  font-size:18px;
+  opacity:.85;
+  line-height:1.6;
 }
 
 /* HERO */
-
 .hero{
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-background:radial-gradient(circle at top, rgba(47,127,109,.25), transparent 60%);
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  background:#2F7F6D;
+  color:white;
+  position:relative;
 }
-
 .hero p{
-margin:20px auto 35px;
-max-width:600px;
+  margin:20px auto 35px;
+  max-width:600px;
 }
-
-/* BUTTON */
-
 .btn{
-display:inline-block;
-padding:16px 32px;
-border-radius:40px;
-background:var(--accent);
-color:white;
-font-weight:600;
-text-decoration:none;
-transition:.3s;
-box-shadow:0 10px 30px rgba(47,127,109,.35);
+  display:inline-block;
+  padding:16px 32px;
+  border-radius:40px;
+  background:var(--accent);
+  color:white;
+  font-weight:600;
+  text-decoration:none;
+  transition:.3s;
+  box-shadow:0 10px 30px rgba(47,127,109,.35);
 }
-
 .btn:hover{
-transform:translateY(-4px) scale(1.05);
-box-shadow:0 15px 40px rgba(47,127,109,.6);
+  transform:translateY(-4px) scale(1.05);
+  box-shadow:0 15px 40px rgba(47,127,109,.6);
 }
 
 /* GRID */
-
 .grid{
-display:grid;
-gap:30px;
+  display:grid;
+  gap:30px;
 }
-
-.services{
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-}
-
-.results{
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-}
-
-.process{
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-}
+.services{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));}
+.results{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
+.process{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));}
 
 /* CARD */
-
 .card{
-background:rgba(255,255,255,.35);
-backdrop-filter:blur(12px);
-padding:35px;
-border-radius:18px;
-border:1px solid rgba(255,255,255,.4);
-transition:.35s;
+  background:rgba(255,255,255,.35);
+  backdrop-filter:blur(12px);
+  padding:35px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.4);
+  transition:.35s, transform .35s;
+  cursor:pointer;
 }
-
 .card:hover{
-transform:translateY(-10px);
-box-shadow:0 20px 50px rgba(0,0,0,.08);
+  transform:translateY(-10px) scale(1.03);
+  box-shadow:0 20px 50px rgba(0,0,0,.1);
 }
 
-/* DARK SECTION */
-
+/* DARK SECTIONS */
 .dark{
-background:var(--dark);
-color:white;
+  background:var(--dark);
+  color:white;
 }
-
 .dark p{
-opacity:.9;
+  opacity:.9;
 }
 
 /* REVIEWS */
-
 .review{
-font-style:italic;
+  font-style:italic;
 }
 
 /* CONTACT */
-
 .contact{
-display:flex;
-flex-wrap:wrap;
-gap:60px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:60px;
 }
-
 form{
-display:flex;
-flex-direction:column;
-gap:15px;
-max-width:450px;
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+  max-width:450px;
 }
-
 input,textarea{
-padding:14px;
-border-radius:10px;
-border:none;
-font-size:16px;
+  padding:14px;
+  border-radius:10px;
+  border:none;
+  font-size:16px;
 }
-
-textarea{
-height:120px;
-}
+textarea{height:120px;}
 
 /* CALENDAR */
-
 .calendar{
-margin-top:50px;
-border-radius:18px;
-overflow:hidden;
-box-shadow:0 20px 50px rgba(0,0,0,.1);
+  margin-top:50px;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,.1);
 }
 
 /* FOOTER */
-
 footer{
-text-align:center;
-padding:40px;
-opacity:.7;
+  text-align:center;
+  padding:40px;
+  opacity:.7;
 }
 
 /* BACKGROUND GLOW */
-
 .glow{
-position:fixed;
-width:500px;
-height:500px;
-background:radial-gradient(circle,var(--accent),transparent 70%);
-filter:blur(120px);
-opacity:.2;
-top:-150px;
-left:-150px;
-z-index:-1;
-animation:float 7s infinite alternate;
+  position:fixed;
+  width:500px;
+  height:500px;
+  background:radial-gradient(circle,var(--accent),transparent 70%);
+  filter:blur(120px);
+  opacity:.2;
+  top:-150px;
+  left:-150px;
+  z-index:-1;
+  animation:float 7s infinite alternate;
 }
-
 @keyframes float{
-from{transform:translateY(-20px)}
-to{transform:translateY(40px)}
+  from{transform:translateY(-20px)}
+  to{transform:translateY(40px)}
 }
 
+/* PROBLEM/SOLUTION */
+.problem-solution{
+  background:#EAF5F1;
+  color:#0F3F35;
+  text-align:center;
+  padding:100px 8%;
+}
+.problem-solution h2{
+  font-size:50px;
+  margin-bottom:30px;
+}
+.problem-solution p{
+  font-size:20px;
+  max-width:800px;
+  margin:0 auto 40px;
+  line-height:1.8;
+  opacity:.9;
+}
+.analysis-btn{
+  display:inline-block;
+  margin-top:30px;
+  padding:16px 40px;
+  border-radius:40px;
+  background:#2F7F6D;
+  color:white;
+  font-weight:700;
+  box-shadow:0 10px 30px rgba(47,127,109,.35);
+  transition:.3s;
+  text-decoration:none;
+}
+.analysis-btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 15px 40px rgba(47,127,109,.6);
+}
+
+/* DETAIL CARDS */
+.detail{
+  display:none;
+  margin-top:20px;
+  padding:20px;
+  background:rgba(47,127,109,.1);
+  border-radius:12px;
+  text-align:left;
+}
+
+/* SPECIAL OFFER */
+.offer{
+  text-align:center;
+  padding:50px 20px;
+  border:3px dashed #2F7F6D;
+  border-radius:20px;
+  margin:60px auto;
+}
+.offer h2{
+  font-size:42px;
+  margin-bottom:20px;
+  color:#2F7F6D;
+}
+.offer p{
+  font-size:20px;
+  opacity:.95;
+  line-height:1.6;
+}
 </style>
-
 </head>
-
 <body>
 
 <div class="glow"></div>
 
 <!-- HERO -->
-
 <section class="hero">
+  <div class="container">
+    <h1>FI Digital</h1>
+    <p>Premium digital marketing agency helping brands grow with social media, ads, and modern growth strategies.</p>
+    <a href="#contact" class="btn">Book a Call</a>
+  </div>
+</section>
 
-<div class="container">
-
-<h1>FI Digital</h1>
-
-<p>
-Premium digital marketing agency helping brands grow with social media, ads, and modern growth strategies.
-</p>
-
-<a href="#contact" class="btn">Book a Call</a>
-
-</div>
-
+<!-- PROBLEM / SOLUTION -->
+<section class="problem-solution">
+  <div class="container">
+    <h2>FI Digital</h2>
+    <p>Most businesses lose potential clients every day.</p>
+    <p>People visit their website or social media, but leave because no one responds fast enough, the content is not engaging, and many processes are still manual.</p>
+    <p>This means lost customers, lost time, and lost revenue.</p>
+    <p>FI Digital helps solve this.</p>
+    <p>We use AI automation and modern digital strategies to help businesses attract more clients, respond faster, and grow more efficiently.</p>
+    <p>Less manual work.<br>More clients.<br>More growth for your business.</p>
+    <a href="https://www.instagram.com/illiahigh7/" target="_blank" class="analysis-btn">Get Free Analysis</a>
+  </div>
 </section>
 
 <!-- SERVICES -->
-
 <section>
-
-<div class="container">
-
-<h2>Services</h2>
-
-<div class="grid services">
-
-<div class="card">
-<h3>SMM</h3>
-<p>Instagram, TikTok and social media growth strategies.</p>
-</div>
-
-<div class="card">
-<h3>Paid Ads</h3>
-<p>High converting Meta and TikTok advertising campaigns.</p>
-</div>
-
-<div class="card">
-<h3>Branding</h3>
-<p>Premium brand identity and positioning.</p>
-</div>
-
-<div class="card">
-<h3>Content Strategy</h3>
-<p>Content systems designed to attract traffic.</p>
-</div>
-
-<div class="card">
-<h3>AI Automation</h3>
-<p>Advanced marketing automation tools (coming soon).</p>
-</div>
-
-</div>
-
-</div>
-
+  <div class="container">
+    <h2>Services</h2>
+    <div class="grid services">
+      <div class="card" onclick="toggleDetail(this)">
+        <h3>SMM</h3>
+        <p>Instagram, TikTok and social media growth strategies.</p>
+        <div class="detail">We create content calendars, grow audience, and manage engagement to maximize conversions. Stop losing followers and potential clients daily.</div>
+      </div>
+      <div class="card" onclick="toggleDetail(this)">
+        <h3>Paid Ads</h3>
+        <p>High converting Meta and TikTok advertising campaigns.</p>
+        <div class="detail">We build campaigns targeting your ideal clients to generate sales quickly. Avoid wasting money on ads that don’t convert.</div>
+      </div>
+      <div class="card" onclick="toggleDetail(this)">
+        <h3>Branding</h3>
+        <p>Premium brand identity and positioning.</p>
+        <div class="detail">We develop a unique brand identity to stand out and attract high-value clients. Stop blending in with competitors.</div>
+      </div>
+      <div class="card" onclick="toggleDetail(this)">
+        <h3>Content Strategy</h3>
+        <p>Content systems designed to attract traffic.</p>
+        <div class="detail">We optimize your content to drive engagement, leads, and growth. Avoid content that doesn’t get noticed.</div>
+      </div>
+      <div class="card" onclick="toggleDetail(this)">
+        <h3>AI Automation</h3>
+        <p>Advanced marketing automation tools (coming soon).</p>
+        <div class="detail">We automate repetitive tasks and client communications, so you save time and close more deals.</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- RESULTS -->
-
 <section class="dark">
-
-<div class="container">
-
-<h2>Results</h2>
-
-<div class="grid results">
-
-<div class="card">
-<h3>+300%</h3>
-<p>Average social media growth</p>
-</div>
-
-<div class="card">
-<h3>5M+</h3>
-<p>Content views generated</p>
-</div>
-
-<div class="card">
-<h3>$150K+</h3>
-<p>Revenue generated for clients</p>
-</div>
-
-</div>
-
-</div>
-
+  <div class="container">
+    <h2>Results</h2>
+    <div class="grid results">
+      <div class="card"><h3>+300%</h3><p>Average social media growth</p></div>
+      <div class="card"><h3>5M+</h3><p>Content views generated</p></div>
+      <div class="card"><h3>$150K+</h3><p>Revenue generated for clients</p></div>
+    </div>
+  </div>
 </section>
 
 <!-- PROCESS -->
-
 <section>
-
-<div class="container">
-
-<h2>Our Process</h2>
-
-<div class="grid process">
-
-<div class="card">
-<h3>Discovery</h3>
-<p>We analyze your brand and market.</p>
-</div>
-
-<div class="card">
-<h3>Strategy</h3>
-<p>Build a custom growth system.</p>
-</div>
-
-<div class="card">
-<h3>Execution</h3>
-<p>Launch campaigns and content.</p>
-</div>
-
-<div class="card">
-<h3>Scaling</h3>
-<p>Optimize and scale what works.</p>
-</div>
-
-</div>
-
-</div>
-
+  <div class="container">
+    <h2>Our Process</h2>
+    <div class="grid process">
+      <div class="card" onclick="toggleDetail(this)"><h3>Discovery</h3><p>We analyze your brand and market.</p><div class="detail">We identify gaps, audience behavior, and opportunities for growth to avoid wasted efforts.</div></div>
+      <div class="card" onclick="toggleDetail(this)"><h3>Strategy</h3><p>Build a custom growth system.</p><div class="detail">We create tailored growth strategies to reach your goals faster and with fewer mistakes.</div></div>
+      <div class="card" onclick="toggleDetail(this)"><h3>Execution</h3><p>Launch campaigns and content.</p><div class="detail">We implement campaigns and track results in real-time to maximize ROI.</div></div>
+      <div class="card" onclick="toggleDetail(this)"><h3>Scaling</h3><p>Optimize and scale what works.</p><div class="detail">We improve campaigns continuously to grow revenue and reduce wasted spend.</div></div>
+    </div>
+  </div>
 </section>
 
-<!-- ABOUT -->
-
-<section class="dark">
-
-<div class="container">
-
-<h2>About FI Digital</h2>
-
-<p style="max-width:700px">
-
-FI Digital is a modern digital marketing agency focused on helping brands grow through powerful content, paid advertising and strategic brand positioning.
-
-We combine creativity, data and technology to build elite digital presence.
-
-</p>
-
-</div>
-
+<!-- CLIENT REVIEWS -->
+<section>
+  <div class="container">
+    <h2>Client Reviews</h2>
+    <div class="grid results">
+      <div class="card review">"FI Digital helped our brand reach 1M views in one month."<br><br><strong>— Alex, Clothing Brand</strong></div>
+      <div class="card review">"Best marketing strategy we’ve used."<br><br><strong>— Daniel, E-commerce</strong></div>
+      <div class="card review">"Our ads became profitable after working with FI Digital."<br><br><strong>— Mark, Startup Founder</strong></div>
+    </div>
+  </div>
 </section>
 
-<!-- REVIEWS -->
-
-<section>
-
-<div class="container">
-
-<h2>Client Reviews</h2>
-
-<div class="grid results">
-
-<div class="card review">
-"FI Digital helped our brand reach 1M views in one month."
-<br><br>
-<strong>— Alex, Clothing Brand</strong>
-</div>
-
-<div class="card review">
-"Best marketing strategy we’ve used."
-<br><br>
-<strong>— Daniel, E-commerce</strong>
-</div>
-
-<div class="card review">
-"Our ads became profitable after working with FI Digital."
-<br><br>
-<strong>— Mark, Startup Founder</strong>
-</div>
-
-</div>
-
-</div>
-
+<!-- SPECIAL OFFER -->
+<section class="offer">
+  <div class="container">
+    <h2>Limited Time Offer!</h2>
+    <p>To prove our results and exceed expectations, we offer 1 month at <strong>50% off</strong>. Act fast, spots are limited!</p>
+  </div>
 </section>
 
 <!-- CONTACT -->
-
 <section id="contact" class="dark">
-
-<div class="container">
-
-<h2>Contact</h2>
-
-<div class="contact">
-
-<form>
-
-<input placeholder="Your name">
-<input placeholder="Email">
-<textarea placeholder="Tell us about your project"></textarea>
-
-<button class="btn">Send Message</button>
-
-</form>
-
-<div>
-
-<p><strong>Email</strong></p>
-<p>illiahigh7@gmail.com</p>
-
-<br>
-
-<p><strong>Phone</strong></p>
-<p>+38 068 540 3251</p>
-
-<br>
-
-<a class="btn" href="mailto:illiahigh7@gmail.com">Email Us</a>
-
-<br><br>
-
-<a class="btn" href="tel:+380685403251">Call Us</a>
-
-</div>
-
-</div>
-
-</div>
-
+  <div class="container">
+    <h2>Contact</h2>
+    <div class="contact">
+      <form>
+        <input placeholder="Your name">
+        <input placeholder="Email">
+        <textarea placeholder="Tell us about your project"></textarea>
+        <button class="btn">Send Message</button>
+      </form>
+      <div>
+        <p><strong>Email</strong></p>
+        <p>illiahigh7@gmail.com</p>
+        <br>
+        <p><strong>Phone</strong></p>
+        <p>+38 068 540 3251</p>
+        <br>
+        <a class="btn" href="mailto:illiahigh7@gmail.com">Email Us</a>
+        <br><br>
+        <a class="btn" href="tel:+380685403251">Call Us</a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- CALENDAR -->
-
 <section>
-
-<div class="container">
-
-<h2>Book a Call</h2>
-
-<p>Schedule a meeting directly in our calendar.</p>
-
-<div class="calendar">
-
-<iframe
-src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3example"
-width="100%"
-height="600"
-frameborder="0">
-</iframe>
-
-</div>
-
-</div>
-
+  <div class="container">
+    <h2>Book a Call</h2>
+    <p>Schedule a meeting directly in our calendar.</p>
+    <div class="calendar">
+      <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3example" width="100%" height="600" frameborder="0"></iframe>
+    </div>
+  </div>
 </section>
 
 <footer>
-
 © 2026 FI Digital — Digital Marketing Agency
-
 </footer>
+
+<script>
+function toggleDetail(el){
+  const detail = el.querySelector('.detail');
+  detail.style.display = detail.style.display === "block" ? "none" : "block";
+}
+
+// FADE-IN ON SCROLL
+const sections = document.querySelectorAll('section');
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('visible');
+    }
+  });
+},{threshold:0.2});
+sections.forEach(sec=>observer.observe(sec));
+</script>
 
 </body>
 </html>
